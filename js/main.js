@@ -23,6 +23,7 @@ var app = {
     },
 
     initialize: function() {
+	    var self = this;
         this.store = new LocalStorageStore(function() {
 	        self.showAlert('LocalStore Initialised', 'Info');
 	    });
