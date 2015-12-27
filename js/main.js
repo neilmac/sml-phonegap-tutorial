@@ -9,9 +9,26 @@ var app = {
 	    }
 	},
 	
+	route: function() {
+	    var hash = window.location.hash;
+	    if (!hash) {
+	        $('body').html(new HomeView(this.store).render().el);
+	        return;
+	    }
+	    var match = hash.match(app.detailsURL);
+	    if (match) {
+	        this.store.findById(Number(match[1]), function(employee) {
+	            $('body').html(new EmployeeView(employee).render().el);
+	        });
+	    }
+	},
+	
 	registerEvents: function() {
 	    var self = this;
-	    // Check of browser supports touch events...
+	    
+	    $(window).on('hashchange', $.proxy(this.route, this));
+	    
+	    // Check if browser supports touch events...
 	    if (document.documentElement.hasOwnProperty('ontouchstart')) {
 	        // ... if yes: register touch event listener to change the "selected" state of the item
 	        $('body').on('touchstart', 'a', function(event) {
@@ -31,17 +48,16 @@ var app = {
 	    }
 	},
 
-    initialize: function() {
-	    
-	    var self = this;
-        this.store = new LocalStorageStore(function() {
-	        self.showAlert('LocalStore Initialised', 'Info');
-	        $('body').html(new HomeView(self.store).render().el);
-	    });
-        $('.search-key').on('keyup', $.proxy(this.findByName, this));
 
-        self.registerEvents();
-    }
+    
+    initialize: function() {
+	    var self = this;
+	    this.detailsURL = /^#employees\/(\d{1,})/;
+	    this.registerEvents();
+	    this.store = new LocalStorageStore(function() {
+	        self.route();
+	    });
+	}
 
 };
 
