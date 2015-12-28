@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.sanctusmedia.mobile.employeedirectory"
         versionCode = "10"
-        version     = "1.1.8">
+        version     = "1.1.9">
  
     <name>Employee Directory</name>
  
@@ -39,7 +39,7 @@
 	<plugin name="org.apache.cordova.camera" version="0.3.2" />
 	<plugin name="org.apache.cordova.console" version="0.2.11" />
 	<plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
-	<plugin name="cordova-plugin-contacts" spec="1.1.0" source="pgb" />
+	<plugin name="org.apache.cordova.contacts" spec="0.2.16" source="pgb" />
 	<plugin name="org.apache.cordova.device" version="0.2.12" />
 	<plugin name="org.apache.cordova.device-motion" version="0.2.10" />
 	<plugin name="org.apache.cordova.device-orientation" version="0.3.9" />
