@@ -27,10 +27,12 @@ var EmployeeView = function(employee) {
 	
 	this.changePicture = function(event) {
 	    event.preventDefault();
+/*
 	    if (!navigator.camera) {
 	        app.showAlert("Camera API not supported", "Error");
 	        return;
 	    }
+*/
 	    var options =   {   quality: 50,
 	                        destinationType: Camera.DestinationType.DATA_URL,
 	                        sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
@@ -52,10 +54,12 @@ var EmployeeView = function(employee) {
 	this.addToContacts = function(event) {
 	    event.preventDefault();
 	    console.log('addToContacts');
+/*
 	    if (!navigator.contacts) {
 	        app.showAlert("Contacts API not supported", "Error");
 	        return;
 	    }
+*/
 	    var contact = navigator.contacts.create();
 	    contact.name = {givenName: employee.firstName, familyName: employee.lastName};
 	    var phoneNumbers = [];
